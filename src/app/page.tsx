@@ -1,101 +1,148 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Wifi, CreditCard, Users, Shield, Zap, BarChart3, ArrowRight, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col min-h-screen bg-background">
+      {/* Header */}
+      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+          <div className="flex items-center gap-2">
+            <Wifi className="h-6 w-6 text-primary" />
+            <span className="text-xl font-bold tracking-tight">IPS Software</span>
+          </div>
+          <nav className="hidden md:flex gap-6 text-sm font-medium">
+            <Link href="#features" className="hover:text-primary transition-colors">Features</Link>
+            <Link href="#pricing" className="hover:text-primary transition-colors">Pricing</Link>
+            <Link href="#about" className="hover:text-primary transition-colors">About</Link>
+          </nav>
+          <div className="flex items-center gap-4">
+            <Link href="/login">
+              <Button variant="ghost" size="sm">Login</Button>
+            </Link>
+            <Link href="/register">
+              <Button size="sm">Get Started</Button>
+            </Link>
+          </div>
         </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative py-20 md:py-32 overflow-hidden">
+          <div className="container px-4 md:px-6 relative z-10">
+            <div className="flex flex-col items-center text-center space-y-8">
+              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                <Zap className="mr-1 h-3.5 w-3.5" />
+                <span>Next-Gen ISP Management</span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 dark:to-blue-400">
+                Automate Your ISP Business <br className="hidden md:block" /> with Ease
+              </h1>
+              <p className="max-w-[700px] text-lg text-muted-foreground md:text-xl">
+                The all-in-one solution for billing, hotspot management, PPPoE automation, and user controls. Built for modern ISPs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <Link href="/dashboard">
+                  <Button size="lg" className="w-full sm:w-auto text-base h-12 px-8">
+                    Start Assessment
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="#demos">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto text-base h-12 px-8">
+                    View Interactive Demo
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Background decoration */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary to-blue-500 rounded-full blur-[100px]" />
+          </div>
+        </section>
+
+        {/* Features Grid */}
+        <section id="features" className="py-20 bg-slate-50 dark:bg-slate-900/50">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-16 space-y-4">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Everything You Need to Scale</h2>
+              <p className="max-w-[700px] mx-auto text-muted-foreground">
+                Comprehensive tools designed to streamline operations and maximize revenue.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <FeatureCard
+                icon={<CreditCard className="h-8 w-8 text-blue-500" />}
+                title="Automated Billing"
+                description="Auto-generate invoices, track payments, and send SMS reminders via M-Pesa integration."
+              />
+              <FeatureCard
+                icon={<Wifi className="h-8 w-8 text-green-500" />}
+                title="Hotspot Management"
+                description="Generate vouchers, manage bandwidth limits, and track active hotspot sessions in real-time."
+              />
+              <FeatureCard
+                icon={<Shield className="h-8 w-8 text-purple-500" />}
+                title="PPPoE Automation"
+                description="Seamless MikroTik integration for automatic user creation, suspension, and reactivation."
+              />
+              <FeatureCard
+                icon={<BarChart3 className="h-8 w-8 text-orange-500" />}
+                title="Analytics Dashboard"
+                description="Visual insights into revenue, data usage, and network health metrics."
+              />
+              <FeatureCard
+                icon={<Users className="h-8 w-8 text-red-500" />}
+                title="User Portal"
+                description="Self-service portal for customers to check usage, pay bills, and manage their plans."
+              />
+              <FeatureCard
+                icon={<Zap className="h-8 w-8 text-yellow-500" />}
+                title="Instant Activation"
+                description="Zero-touch provisioning ensures customers get online immediately after payment."
+              />
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="py-10 border-t bg-background">
+        <div className="container px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-2">
+            <Wifi className="h-5 w-5 text-muted-foreground" />
+            <p className="text-sm text-muted-foreground">© 2024 IPS Software. All rights reserved.</p>
+          </div>
+          <nav className="flex gap-6 text-sm text-muted-foreground">
+            <Link href="#" className="hover:underline">Terms</Link>
+            <Link href="#" className="hover:underline">Privacy</Link>
+            <Link href="#" className="hover:underline">Contact</Link>
+          </nav>
+        </div>
       </footer>
     </div>
+  );
+}
+
+function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
+  return (
+    <Card className="border-border/50 bg-background/50 hover:bg-background hover:shadow-lg transition-all duration-300">
+      <CardHeader>
+        <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800">
+          {icon}
+        </div>
+        <CardTitle className="text-xl">{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription className="text-base leading-relaxed">
+          {description}
+        </CardDescription>
+      </CardContent>
+    </Card>
   );
 }
